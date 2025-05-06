@@ -1,0 +1,5 @@
+kwh=0.64
+agua=0.06
+internet=198.0
+ht=177.0
+custo=162.01

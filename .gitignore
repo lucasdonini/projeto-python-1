@@ -1,3 +1,20 @@
-.venv/
+# Ignorar arquivos do PyCharm
+.idea/
+
+# Ignorar arquivos Python compilados
 __pycache__/
+*.pyc
+*.pyo
+
+# Ignorar ambientes virtuais
+.venv/
+venv/
+
+# Ignorar outros arquivos de configuração específicos
+*.log
+*.db
+
+
+# desse ponto para baixo, feito por mim, para cima, pelo gpt
+
 database/

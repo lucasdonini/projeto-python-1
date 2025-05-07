@@ -3,30 +3,20 @@
 * O branch main é reservado para os arquivos de organização relacionados às licenças e para o README.md
 * O branch master, por sua vez, é o que contém os arquivos do programa mesmo
 
-## Instruções de clonagem:
-Use: `git clone -b master 'https://github.com/lucasdonini/projeto-python-1' <nome do diretório de sua escolha>`
+## Instruções de clonagem e utilização do programa:
+* Use `git clone -b master 'https://github.com/lucasdonini/projeto-python-1' <nome do diretório de sua escolha>` para clonar o diretório
+* Use um ambiente virtual compatível
+* Crie um atalho para o acrivate.bat na área de trabalho ou outro lugar de sua peferência (opcional)
+* Também disponibilizei um png com a logo do python, você pode usar como ícone do atalho (opcional)
 
-## Requisitos de Funcionamento:
-* Criar um diretório chamado 'database'
-* Criar o arquivo database/origin.txt
-* Criar o arquivo database/data.txt
-* Usar um ambiente virtual compatível
 
 ## Módulos Importados
 * shutil
 * os
 
 ## Primeiros Passos
-1. Preencha o arquivo origin.txt com dados seguindo o modelo abaixo:
-    ```
-    kwh=0
-    agua=0
-    internet=0
-    ht=0
-    custo=0
-    ```
-2. Rode o Main.
-3. Use os comandos do menu para alterar seus dados da maneira que preferir
+1. Rode activate.bat.
+2. Use os comandos do menu para alterar seus dados da maneira que preferir
 
 ## Comandos do Terminal:
 * `bin`: exibe os comandos existentes
@@ -42,5 +32,10 @@ Use: `git clone -b master 'https://github.com/lucasdonini/projeto-python-1' <nom
 * `backup to origin`: salva os dados locais (`data.txt`) na orígem (`origin.txt`)
 * `reformat`: limpa os backups, limpa os dados locais e restaura da orígem
 * `exit`: sai do terminal
+* `init`: cria (caso necessário) toda a estrutura de dados necessária para o programa funcionar dentro de uma pasta chamada `database`
+* `set backup limit`: pede um input de um número inteiro positivo que será o limite de arquivos de backup. O valor padrão é 10
 
-# !!!AINDA NÃO CONLCUIDO. NÃO USE O PROGRAMA AINDA!!!
+
+> Contato: se você não tem, problema seu. Não vou por aqui
+
+> Caso encotre algum erro ou tenha alguma sugestão, entre em contato comigo.

@@ -32,7 +32,7 @@
 * `backup to origin`: salva os dados locais (`data.txt`) na orígem (`origin.txt`)
 * `reformat`: limpa os backups, limpa os dados locais e restaura da orígem
 * `exit`: sai do terminal
-* `init`: cria (caso necessário) toda a estrutura de dados necessária para o programa funcionar dentro de uma pasta chamada `database`
+* `repair`: repara toda a estrutura de dados necessária para o programa funcionar dentro de uma pasta chamada `database`. Também apaga TODAS as informações.
 * `set backup limit`: pede um input de um número inteiro positivo que será o limite de arquivos de backup. O valor padrão é 10
 
 

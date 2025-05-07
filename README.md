@@ -41,3 +41,6 @@ Use: `git clone -b master 'https://github.com/lucasdonini/projeto-python-1' <nom
 * `backup`: salva os dados locais (`data.txt`) em um arquivo de backup
 * `backup to origin`: salva os dados locais (`data.txt`) na orígem (`origin.txt`)
 * `reformat`: limpa os backups, limpa os dados locais e restaura da orígem
+* `exit`: sai do terminal
+
+# !!!AINDA NÃO CONLCUIDO. NÃO USE O PROGRAMA AINDA!!!

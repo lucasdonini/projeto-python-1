@@ -15,13 +15,20 @@ def gravar(**kargs):
 def save():
     global dados, last_backup_id
     last_backup_id = get_id()
-    gravar(kwh=dados['kwh'], agua=dados['agua'], internet=dados['internet'], ht=dados['ht'], custo=dados['custo'])
+    while True:
+        try:
+            gravar(kwh=dados['kwh'], agua=dados['agua'], internet=dados['internet'], ht=dados['ht'], custo=dados['custo'])
+            break
+        except KeyError:
+            dados = ler()
+        except Exception as e:
+            print(f'Erro inesperado: {e}')
     backup(f'database/backup{last_backup_id + 1}.txt')
 
 
 def ler():
     global dados
-    dados = {}
+    dados = {'kwh': 0, 'agua': 0, 'internet': 0, 'ht': 0, 'custo': 0}
     with open('database/data.txt', 'r') as f:
         for linha in f:
             chave, valor = [p.strip() for p in linha.replace('\n', '').split('=')]
@@ -30,11 +37,11 @@ def ler():
 
 
 def get_id():
-    with open('database/id_registry.txt', 'r') as f:
-        ids = []
-        for x in f:
-            ids.append(int(x))
-        return ids[0]
+    try:
+        with open('database/id_registry.txt', 'r') as f:
+            return int(f.read().strip())  # Convertendo para int e removendo espaços em branco
+    except (FileNotFoundError, ValueError):
+        return 0  # Retorna 0 se o arquivo não existir ou se houver erro na conversão
 
 
 def store_id():
@@ -135,6 +142,7 @@ def backup(local):
     last_backup_id = get_id() + 1
     st.copy('database/data.txt', local)
     store_id()
+    limit_backup()
 
 
 def reformat():
@@ -163,6 +171,8 @@ def terminal():
             'backup': lambda: backup(f'database/backup{last_backup_id + 1}.txt'),
             'backup to origin': lambda: backup('database/origin.txt'),
             'reformat': reformat,
+            'repair': repair,
+            'set backup limit':lambda: set_backup_limit(input('>>> New Limit: '))
         }
 
         if command in commands.keys():
@@ -174,3 +184,53 @@ def terminal():
 
         dados = ler()
         save()
+
+
+def repair():
+    if os.path.exists('database'):
+        pass
+    else:
+        os.mkdir('database')
+
+    gravar(kwh=0, agua=0, internet=0, ht=0, custo=0)
+
+    with open('database/id_registry.txt', 'w') as f:
+        f.write('0')
+
+    with open('database/origin.txt', 'w') as f:
+        pass
+
+    backup('database/origin.txt')
+
+    set_backup_limit('10')
+
+    truncate()
+
+
+def limit_backup():
+    global last_backup_id
+    last_backup_id = get_id()
+    backup_ids = [x for x in range(1, last_backup_id+1) if x > 0][:-get_backup_limit()]
+    for i in backup_ids:
+        try:
+            os.remove(f'database/backup{i}.txt')
+        except:
+            pass
+
+
+def get_backup_limit():
+    try:
+        with open('database/backup_limit.txt', 'r') as f:
+            return int(f.read())
+    except (FileNotFoundError, ValueError):
+        set_backup_limit(10)
+        return 10
+
+
+def set_backup_limit(x):
+    x = x.strip()
+    if not x.isnumeric():
+        print('ERRO: valor inválido')
+    else:
+        with open('database/backup_limit.txt', 'w') as f:
+            f.write(x)

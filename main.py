@@ -1,11 +1,15 @@
 from functions import *
 
 # leitura do banco de dados e criação dos dados temporarios
-try:
-    dados = ler()
-except ValueError:
-    print('ERRO: Algo deu errado ao carregar os dados')
-    terminal()
+while True:
+    try:
+        dados = ler()
+        break
+    except ValueError:
+        print('ERRO: Algo deu errado ao carregar os dados')
+        terminal()
+    except FileNotFoundError:
+        repair()
 
 # Menu e suas funções
 opcoes_menu = {
@@ -36,8 +40,11 @@ def main():
         escolha = chose('\nInsira o número correspondente a sua escolha: ', opcoes_menu.keys())
         funcoes_menu[opcoes_menu[escolha]]()
 
-        calc_custo()
-        save()
+        try:
+            calc_custo()
+            save()
+        except:
+            pass
 
         print('\nDADOS SALVOS:')
         mostrar_dados()
@@ -46,6 +53,7 @@ def main():
         if escolha in opcao_saida: break
 
         input('\nPressione [enter] para voltar ao Menu')
+
 
 
 if __name__ == '__main__': main()

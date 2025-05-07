@@ -171,7 +171,7 @@ def terminal():
             'backup': lambda: backup(f'database/backup{last_backup_id + 1}.txt'),
             'backup to origin': lambda: backup('database/origin.txt'),
             'reformat': reformat,
-            'repair': repair,
+            'repair': init,
             'set backup limit':lambda: set_backup_limit(input('>>> New Limit: '))
         }
 
@@ -186,7 +186,7 @@ def terminal():
         save()
 
 
-def repair():
+def init():
     if os.path.exists('database'):
         pass
     else:
@@ -229,7 +229,7 @@ def get_backup_limit():
 
 def set_backup_limit(x):
     x = x.strip()
-    if not x.isnumeric():
+    if not x.isdigit():
         print('ERRO: valor inválido')
     else:
         with open('database/backup_limit.txt', 'w') as f:

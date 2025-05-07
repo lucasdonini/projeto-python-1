@@ -9,7 +9,7 @@ while True:
         print('ERRO: Algo deu errado ao carregar os dados')
         terminal()
     except FileNotFoundError:
-        repair()
+        init()
 
 # Menu e suas funções
 opcoes_menu = {

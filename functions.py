@@ -1,5 +1,6 @@
 import os
 import shutil as st
+
 global dados
 global last_backup_id
 

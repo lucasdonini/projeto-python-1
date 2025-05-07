@@ -28,4 +28,16 @@ Use: `git clone -b master 'https://github.com/lucasdonini/projeto-python-1' <nom
 2. Rode o Main.
 3. Use os comandos do menu para alterar seus dados da maneira que preferir
 
-## Comandos "Avançados" :
+## Comandos do Terminal:
+* `bin`: exibe os comandos existentes
+* `restore`: restaura os dados do último backup
+* `restore from origin`: restaura os dados da orígem (`origin.txt`)
+* `truncate`: apaga todos os backups, mas matém a origem inalterada
+* `show local data`: mostra os dados de `data.txt`
+* `show origin data`: mostra os dados da orígem (`origin.txt`)
+* `show backup data`: mostra os dados do último backup
+* `show backup id`: mostra o id do último backup. Ex.: o id de `backup25.txt` é 25
+* `wipe`: salva todos os dados como 0, mas cria um backup com as últimas informações
+* `backup`: salva os dados locais (`data.txt`) em um arquivo de backup
+* `backup to origin`: salva os dados locais (`data.txt`) na orígem (`origin.txt`)
+* `reformat`: limpa os backups, limpa os dados locais e restaura da orígem
